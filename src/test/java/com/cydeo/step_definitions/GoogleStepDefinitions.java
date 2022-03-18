@@ -11,6 +11,11 @@ public class GoogleStepDefinitions {
 
     GoogleSearchPage googleSearchPage = new GoogleSearchPage();
 
+    @When("user types {word} and clicks enter")
+    public void user_Types_And_Clicks_Enter2(String searchKeyword) {
+        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+    }
+
     @When("user types {string} and clicks enter")
     public void user_Types_And_Clicks_Enter(String searchKeyword) {
         googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
@@ -26,15 +31,9 @@ public class GoogleStepDefinitions {
     }
 
 
-    @When("user types apple and clicks enter")
-    public void user_Types_Apple_And_Clicks_Enter() {
-        googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
-
-    }
-
-    @Then("user sees apple in the google title")
-    public void user_Sees_Apple_In_The_Google_Title() {
-        String expectedTitle = "apple - Google Search";
+    @Then("user sees {word} in the google title")
+    public void user_Sees_Apple_In_The_Google_Title(String word) {
+        String expectedTitle = word+" - Google Search";
         String actualTitle = Driver.getDriver().getTitle();
 
         Assert.assertEquals(actualTitle,expectedTitle);

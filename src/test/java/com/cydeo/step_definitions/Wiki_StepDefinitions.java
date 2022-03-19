@@ -40,7 +40,7 @@ public class Wiki_StepDefinitions {
     public void user_Sees_Is_In_The_Main_Header(String string) {
         Assert.assertTrue(wikiSearchPage.mainHeader.isDisplayed());
 
-        Assert.assertTrue(wikiSearchPage.mainHeader.getText().equals("Steve Jobs"));
+        Assert.assertTrue(wikiSearchPage.mainHeader.getText().equals(string));
 
     }
 }

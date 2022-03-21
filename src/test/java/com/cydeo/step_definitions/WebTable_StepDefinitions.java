@@ -46,6 +46,7 @@ public class WebTable_StepDefinitions {
     public void userEntersUsernamePasswordAndLogins(String userName, String pw) {
 
        webTableLoginPage.login(userName, pw);
+       //webTableLoginPage.loginWithConfig();
 
     }
 

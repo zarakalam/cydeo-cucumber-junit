@@ -1,6 +1,7 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.DropDownsPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -33,20 +34,9 @@ public class DataTable_StepDefinitions {
     @Then("User should see below info in month dropdown")
     public void user_should_see_below_info_in_month_dropdown(List<String> expectedMonths) {
 
-        Select select = new Select(dropDownsPage.monthDropDown);
+        List<String> actualMonths = BrowserUtils.dropDownOptionsAsString(dropDownsPage.monthDropDown);
 
-        //List of all month <options> as a web element
-        List<WebElement> actualOptionsAsAWebElement = select.getOptions();
-
-        //List of all ACTUAL months <options> as a string
-        List<String> actualOptionsAsString = new ArrayList<>();
-
-        for (WebElement each : actualOptionsAsAWebElement) {
-            actualOptionsAsString.add(each.getText());
-
-        }
-
-        Assert.assertEquals(expectedMonths, actualOptionsAsString);
+        Assert.assertEquals(expectedMonths, actualMonths);
 
 
 

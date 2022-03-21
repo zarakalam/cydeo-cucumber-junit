@@ -45,4 +45,8 @@ public class BrowserUtils {
 
     }
 
+    public static void verifyTitleContains(String expectedInUrl){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInUrl));
+    }
+
 }

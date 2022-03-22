@@ -15,54 +15,45 @@ public class WebTable_StepDefinitions {
 
     WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
 
-    @Given("User is on the login page of the webtable app")
-    public void user_is_on_the_login_page_of_the_web_table_app() {
+    @Given("user is on the login page of web table app")
+    public void user_is_on_the_login_page_of_web_table_app() {
         String url = ConfigurationReader.getProperty("web.table.url");
         Driver.getDriver().get(url);
     }
-
     @When("user enters username {string}")
-    public void user_Enters_Username(String string) {
+    public void user_enters_username(String string) {
         webTableLoginPage.inputUsername.sendKeys(string);
-
     }
-
-    @And("user enters password {string}")
-    public void user_Enters_Password(String string) {
+    @When("user enters password {string}")
+    public void user_enters_password(String string) {
         webTableLoginPage.inputPassword.sendKeys(string);
-
     }
-
-    @When("user clicks login button")
-    public void user_clicks_login_button() {
+    @When("user clicks to login button")
+    public void user_clicks_to_login_button() {
         webTableLoginPage.loginButton.click();
     }
-
     @Then("user should see url contains orders")
     public void user_should_see_url_contains_orders() {
         BrowserUtils.verifyURLContains("orders");
     }
 
-
     @When("user enters username {string} password {string} and logins")
-    public void userEntersUsernamePasswordAndLogins(String userName, String pw) {
+    public void userEntersUsernamePasswordAndLogins(String username, String pw) {
 
-       webTableLoginPage.login(userName, pw);
-       //webTableLoginPage.loginWithConfig();
+        webTableLoginPage.login(username, pw);
 
     }
 
-    @When("User enters below credentials")
+    @When("user enters below credentials")
     public void user_enters_below_credentials(Map<String, String> credentials) {
 
-        /*
-        webTableLoginPage.inputUsername.sendKeys(credentials.get("username"));
-        webTableLoginPage.inputPassword.sendKeys(credentials.get("password"));
-        webTableLoginPage.loginButton.click();
+//        webTableLoginPage.inputUsername.sendKeys(credentials.get("username"));
+//        webTableLoginPage.inputPassword.sendKeys(credentials.get("password"));
+//        webTableLoginPage.loginButton.click();
 
-         */
-
+        //we can call our login utility method and pass values from map
         webTableLoginPage.login(credentials.get("username"), credentials.get("password"));
+
     }
 
 

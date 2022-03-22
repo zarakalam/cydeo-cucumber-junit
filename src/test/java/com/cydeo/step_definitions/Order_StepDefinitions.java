@@ -3,6 +3,7 @@ package com.cydeo.step_definitions;
 import com.cydeo.pages.BasePage;
 import com.cydeo.pages.OrderPage;
 import com.cydeo.pages.WebTableLoginPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -80,6 +81,8 @@ public class Order_StepDefinitions {
     @When("user selects credit card type {string}")
     public void user_selects_credit_card_type(String expectedCardType) {
 
+        BrowserUtils.clickRadioButton(orderPage.cardType, expectedCardType);
+        /*
         List<WebElement> cardTypes =orderPage.cardType;
 
         for (WebElement each : cardTypes) {
@@ -90,20 +93,25 @@ public class Order_StepDefinitions {
 
         }
 
+         */
 
     }
+
     @When("user enters credit card number {string}")
     public void user_enters_credit_card_number(String string) {
 
     }
+
     @When("user enters expiry date {string}")
     public void user_enters_expiry_date(String string) {
 
     }
+
     @When("user enters process order button")
     public void user_enters_process_order_button() {
 
     }
+
     @Then("user should see {string} in first row of the web table")
     public void user_should_see_in_first_row_of_the_web_table(String string) {
 

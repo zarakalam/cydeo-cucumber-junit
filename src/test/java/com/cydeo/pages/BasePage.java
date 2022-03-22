@@ -23,4 +23,7 @@ public class BasePage {
     @FindBy(xpath = "//button[.='Logout']")
     public WebElement logoutButton;
 
+    @FindBy(xpath = "//input[@placeholder='The number on the card']")
+    public WebElement inputCreditCard;
+
 }
